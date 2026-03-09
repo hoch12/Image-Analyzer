@@ -1,1 +1,2 @@
-icrawler==0.6.7
+six
+icrawler==0.6.10
