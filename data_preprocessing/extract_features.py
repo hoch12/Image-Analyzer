@@ -1,16 +1,16 @@
 import os
+import sys
 import cv2
 import mediapipe as mp
 import pandas as pd
 import numpy as np
 
-# Configuration paths
-DATA_DIR = "data/raw"
-OUTPUT_DIR = "data/processed"
-OUTPUT_CSV = os.path.join(OUTPUT_DIR, "hand_landmarks.csv")
+# Add project root to path for central config
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src import config
 
-# Ensure output directory exists
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+# Ensure output directory exists based on config
+os.makedirs(config.DATA_DIR_PROCESSED, exist_ok=True)
 
 # Initialize MediaPipe Hands
 mp_hands = mp.solutions.hands
@@ -20,11 +20,8 @@ hands = mp_hands.Hands(
     min_detection_confidence=0.5
 )
 
-# Classes mapping (0 = other, 1 = middle_finger)
-CLASSES = {
-    "other": 0,
-    "middle_finger": 1
-}
+# Classes mapping from central config
+CLASSES = config.CLASSES
 
 def extract_features():
     print("===============================================")
@@ -43,18 +40,18 @@ def extract_features():
         columns.extend([f"landmark_{i}_x", f"landmark_{i}_y", f"landmark_{i}_z"])
     columns.append("class_label")
 
-    print(f"[*] Scanning directory: {DATA_DIR}")
+    print(f"[*] Scanning directory: {config.DATA_DIR_RAW}")
     
     # Iterate through all classes (folders)
     for class_name, label_id in CLASSES.items():
-        class_folder = os.path.join(DATA_DIR, class_name)
+        class_folder = os.path.join(config.DATA_DIR_RAW, class_name)
         if not os.path.exists(class_folder):
             print(f"[!] Warning: Folder {class_folder} does not exist. Skipping.")
             continue
             
         print(f"\n[*] Processing class: '{class_name}' (Label: {label_id})")
         
-        image_files = [f for f in os.listdir(class_folder) if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
+        image_files = [f for f in os.listdir(class_folder) if f.lower().endswith(config.ALLOWED_IMAGE_EXTENSIONS)]
         
         for idx, img_file in enumerate(image_files):
             total_images_scanned += 1
@@ -106,8 +103,8 @@ def extract_features():
     if data_rows:
         print(f"\n[*] Creating DataFrame with {images_with_hands} rows and {len(columns)} columns...")
         df = pd.DataFrame(data_rows, columns=columns)
-        df.to_csv(OUTPUT_CSV, index=False)
-        print(f"[+] Dataset successfully saved to: {OUTPUT_CSV}")
+        df.to_csv(config.OUTPUT_CSV_PATH, index=False)
+        print(f"[+] Dataset successfully saved to: {config.OUTPUT_CSV_PATH}")
     else:
         print("[-] Error: No hands were detected in any of the images. CSV not created.")
 

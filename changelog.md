@@ -2,6 +2,11 @@
 
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [0.1.1] - 2026-03-09
+### Changed
+- **Centralized Configuration**: Refactored the architecture by extracting all hardcoded paths, variables, ML class labels, and crawler search queries into a single `src/config.py` file. This prevents future bugs and explicitly isolates the codebase configuration.
+- **Documentation Policy**: Enforced a strict policy that all codebase modifications must be logged in the Changelog and synchronized with `docs/documentation.md`.
+
 ## [0.1.0] - 2026-03-09
 ### Added
 - **Machine Learning Pipeline (Colab)**: Developed `notebooks/Model_Training.ipynb` to offload the heavy MediaPipe feature extraction and Random Forest model training to Google's cloud servers.

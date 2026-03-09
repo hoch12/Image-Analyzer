@@ -12,8 +12,18 @@ This document outlines the complete process of building the **Image Analyzer**, 
 6. **Code Separation**: Any non-authorship code will be clearly isolated in the `lib` folder.
 7. **Process Presentation**: This documentation serves as a timeline and explanation of the decision-making process.
 
-## Step 1: Data Collection Strategy
-Because we need absolute proof that we collected the data ourselves, and because we need at least 1500 images, we have decided to use a **Webcam Data Collection Script**.
-Instead of scraping random images from the web (which could cause copyright issues and violate the "no pre-made datasets" rule), we will use OpenCV (`cv2`) to record a live feed from the webcam. The author will record themselves performing the gestures, rapidly saving frames to the disk to quickly reach the required dataset size.
+## Architectural Standards & Configuration
+To maintain a clean and modular codebase, absolutely all static parameters (file paths, search queries, machine learning labels, iteration counts) have been extracted entirely into **`src/config.py`**. 
+- No python script contains "magic numbers" or hardcoded paths.
+- Code logic is fully separated from configuration state.
+- Documentation and the `changelog.md` are strictly synchronized with every system change.
 
-*(This document will be continuously updated as the project progresses through Data Preprocessing, Model Training, and UI Development.)*
+## Step 1: Data Collection Strategy
+Because we need absolute proof that we collected the data ourselves, and because we need at least 1500 images, we initially planned to use a webcam script. However, to preserve user privacy and increase dataset variety, we pivoted to **Web Crawling/Scraping**.
+We used the `icrawler` (BingImageCrawler) library to automatically search and download images from the internet based on 30+ diverse queries (e.g., "person wearing glasses middle finger", "group selfie", "empty room"). This safely and provably generated a dataset of **over 2500 unique images**, split between the "middle_finger" and "other" classes.
+
+## Step 2: Data Preprocessing & Feature Extraction
+To fulfill the requirement of parsing the data into at least 5 attributes, we are using Google's **MediaPipe Hands** framework.
+A custom preprocessing script reads every downloaded image. If a hand is detected, the AI extracts the 3D coordinates (x, y, z) of 21 hand landmarks, resulting in exactly **63 numerical attributes**. If no hand is found (e.g., in our "empty room" background pictures), the image is skipped ensuring our final dataset remains purely numeric and mathematically precise. The output is a robust CSV tabular format ready for ML training.
+
+*(This document will be continuously updated as the project progresses through Model Training and UI Development.)*
