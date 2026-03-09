@@ -50,7 +50,10 @@ def main():
         "clapping hands",
         "crossed fingers luck",
         "shaking hands gesture",
-        "thumbs down gesture"
+        "thumbs down gesture",
+        "empty room interior",
+        "nature landscape background",
+        "person walking away"
     ]
 
     # Target images per query
