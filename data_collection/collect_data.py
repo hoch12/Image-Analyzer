@@ -10,12 +10,16 @@ def crawl_images(keyword, save_dir, max_num):
     print(f"[*] Starting crawl for: '{keyword}' into {save_dir}")
     os.makedirs(save_dir, exist_ok=True)
     
+    # Calculate offset so we don't overwrite existing images (000001.jpg, 000002.jpg...)
+    existing_files = len([f for f in os.listdir(save_dir) if os.path.isfile(os.path.join(save_dir, f))])
+    print(f"    Current files in dir: {existing_files}. Offset set to {existing_files}.")
+    
     crawler = BingImageCrawler(storage={'root_dir': save_dir})
     
     # Optional filters to get better data
     filters = dict(type='photo', color='color')
     
-    crawler.crawl(keyword=keyword, filters=filters, max_num=max_num, file_idx_offset=0)
+    crawler.crawl(keyword=keyword, filters=filters, max_num=max_num, file_idx_offset=existing_files)
     print(f"[+] Finished crawling for: '{keyword}'. Total requested: {max_num}\n")
 
 def main():
