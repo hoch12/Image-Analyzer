@@ -2,6 +2,11 @@
 
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [0.1.2] - 2026-03-09
+### Changed
+- **Architectural Cleanup**: Deleted the obsolete `data_preprocessing/extract_features.py` bulk-processing script, as bulk training was permanently migrated to Google Colab in `v0.1.0`.
+- **Reusable Modules**: Extracted the core MediaPipe detection logic into a pure, reusable function in a new file `src/features.py`. This isolates the feature extraction logic cleanly for the upcoming GUI application to use for single-image inference.
+
 ## [0.1.1] - 2026-03-09
 ### Changed
 - **Centralized Configuration**: Refactored the architecture by extracting all hardcoded paths, variables, ML class labels, and crawler search queries into a single `src/config.py` file. This prevents future bugs and explicitly isolates the codebase configuration.

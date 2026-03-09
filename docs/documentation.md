@@ -24,6 +24,8 @@ We used the `icrawler` (BingImageCrawler) library to automatically search and do
 
 ## Step 2: Data Preprocessing & Feature Extraction
 To fulfill the requirement of parsing the data into at least 5 attributes, we are using Google's **MediaPipe Hands** framework.
-A custom preprocessing script reads every downloaded image. If a hand is detected, the AI extracts the 3D coordinates (x, y, z) of 21 hand landmarks, resulting in exactly **63 numerical attributes**. If no hand is found (e.g., in our "empty room" background pictures), the image is skipped ensuring our final dataset remains purely numeric and mathematically precise. The output is a robust CSV tabular format ready for ML training.
+The bulk extraction of the 2500+ collected images is handled exclusively by the Google Colab Notebook (`notebooks/Model_Training.ipynb`) to bypass local macOS compatibility issues. 
+
+For the core architecture, the mathematical extraction logic (converting an image into exactly **63 numerical attributes** - 3D coordinates for 21 hand landmarks) is modularized in **`src/features.py`**. If no hand is found (e.g., in our "empty room" background pictures), the extraction returns `None`, ensuring our ML dataset remains purely numeric and mathematically precise. The output of the Colab training phase is a robust CSV tabular format ready for ML training.
 
 *(This document will be continuously updated as the project progresses through Model Training and UI Development.)*
