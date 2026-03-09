@@ -2,6 +2,10 @@
 
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [0.0.3] - 2026-03-09
+### Changed
+- **Extreme Dataset Diversification**: Vastly expanded search queries in `collect_data.py` to include faces, groups, selfies, body contexts, and completely random events. This ensures the ML model learns to identify the gesture regardless of the background noise or human presence, and avoids false positives on regular face shots.
+
 ## [0.0.2] - 2026-03-09
 ### Changed
 - **Data Collection Strategy**: Switched from webcam to web scraping (BingImageCrawler) to protect user privacy and automate the collection.

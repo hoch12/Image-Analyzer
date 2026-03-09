@@ -35,6 +35,13 @@ def main():
         "angry person middle finger",
         "showing the finger gesture",
         "middle finger isolated clear",
+        "person face with middle finger gesture",
+        "celebrity showing middle finger",
+        "selfie showing middle finger",
+        "crowd person pointing middle finger",
+        "woman showing middle finger to camera",
+        "man flipping bird portrait",
+        "kid showing middle finger"
     ]
     
     # Other Gestures Queries (Negative dataset)
@@ -53,12 +60,20 @@ def main():
         "thumbs down gesture",
         "empty room interior",
         "nature landscape background",
-        "person walking away"
+        "person walking away",
+        "person smiling face portrait",
+        "group of people taking selfie",
+        "man hands in pockets",
+        "woman holding smartphone",
+        "crowd of people cheering",
+        "person eating food close up",
+        "dog playing in park",
+        "car driving on street"
     ]
 
     # Target images per query
-    # 8 queries * 150 = 1200 max theoretical for middle finger
-    # 12 queries * 100 = 1200 max theoretical for other
+    # 15 queries * 150 = 2250 max theoretical for middle finger
+    # 23 queries * 100 = 2300 max theoretical for other
     imgs_per_mf_query = 150
     imgs_per_other_query = 100
 
