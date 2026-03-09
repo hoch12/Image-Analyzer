@@ -1,6 +1,6 @@
 import os
 import time
-from icrawler.builtin import GoogleImageCrawler
+from icrawler.builtin import BingImageCrawler
 
 # Define save directories
 SAVE_DIR_MIDDLE = "data/raw/middle_finger"
@@ -10,7 +10,7 @@ def crawl_images(keyword, save_dir, max_num):
     print(f"[*] Starting crawl for: '{keyword}' into {save_dir}")
     os.makedirs(save_dir, exist_ok=True)
     
-    crawler = GoogleImageCrawler(storage={'root_dir': save_dir})
+    crawler = BingImageCrawler(storage={'root_dir': save_dir})
     
     # Optional filters to get better data
     filters = dict(type='photo', color='color')
@@ -24,7 +24,7 @@ def main():
     print("===============================================")
     
     # Middle Finger Queries
-    # Google handles multiple overlapping queries well if we put them in the same root_dir
+    # Bing handles multiple overlapping queries well if we put them in the same root_dir
     # icrawler will automatically iterate file names starting from 000001.jpg
     middle_finger_queries = [
         "person showing middle finger",
@@ -61,7 +61,7 @@ def main():
 
     print("===============================================")
     print(" Data collection finished. Please verify the `data/raw` contents.")
-    print(" Note: Google may not find the exact max_num, so check the final count.")
+    print(" Note: Bing may not find the exact max_num, so check the final count.")
 
 if __name__ == "__main__":
     main()
