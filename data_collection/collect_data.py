@@ -30,7 +30,11 @@ def main():
         "person showing middle finger",
         "middle finger gesture",
         "flipping the bird gesture",
-        "hand pointing middle finger"
+        "hand pointing middle finger",
+        "middle finger sign",
+        "angry person middle finger",
+        "showing the finger gesture",
+        "middle finger isolated clear",
     ]
     
     # Other Gestures Queries (Negative dataset)
@@ -40,14 +44,20 @@ def main():
         "open palm hand",
         "fist bump gesture",
         "peace sign hand fingers",
-        "pointing index finger"
+        "pointing index finger",
+        "holding pen hand",
+        "ok hand gesture sign",
+        "clapping hands",
+        "crossed fingers luck",
+        "shaking hands gesture",
+        "thumbs down gesture"
     ]
 
     # Target images per query
-    # We want >800 per class. E.g. 4 queries * 250 = 1000 for middle finger
-    # 6 queries * 150 = 900 for other.
-    imgs_per_mf_query = 250
-    imgs_per_other_query = 150
+    # 8 queries * 150 = 1200 max theoretical for middle finger
+    # 12 queries * 100 = 1200 max theoretical for other
+    imgs_per_mf_query = 150
+    imgs_per_other_query = 100
 
     print("\n--- Crawling 'Middle Finger' Class ---")
     for q in middle_finger_queries:
