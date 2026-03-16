@@ -28,4 +28,13 @@ The bulk extraction of the 2500+ collected images is handled exclusively by the 
 
 For the core architecture, the mathematical extraction logic (converting an image into exactly **63 numerical attributes** - 3D coordinates for 21 hand landmarks) is modularized in **`src/features.py`**. If no hand is found (e.g., in our "empty room" background pictures), the extraction returns `None`, ensuring our ML dataset remains purely numeric and mathematically precise. The output of the Colab training phase is a robust CSV tabular format ready for ML training.
 
-*(This document will be continuously updated as the project progresses through Model Training and UI Development.)*
+## Step 3: Model Performance
+Based on the latest training session, the model achieves the following metrics on unseen data (20% test split):
+- **Overall Accuracy: 80.97%**
+- **Precision (Middle Finger): 82%**
+- **Recall (Middle Finger): 69%**
+- **F1-Score (Middle Finger): 75%**
+
+Tato přesnost je pro demonstraci v rámci školního projektu plně dostačující. Vyšší přesnosti by bylo možné dosáhnout zvětšením datasetu o fotografie rukou z různých úhlů.
+
+*(This document will be continuously updated as the project progresses through UI Development.)*

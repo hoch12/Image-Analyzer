@@ -2,6 +2,11 @@
 
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [0.1.3] - 2026-03-16
+### Added
+- **Detailed Codebase Explanation**: Created a comprehensive, line-by-line analysis of all project components (config, features, data collection, and ML pipeline) to ensure 100% understanding of the internal logic.
+- **Documentation Verification**: Verified that all project requirements in `zadani.md` are documented and met.
+
 ## [0.1.2] - 2026-03-09
 ### Changed
 - **Architectural Cleanup**: Deleted the obsolete `data_preprocessing/extract_features.py` bulk-processing script, as bulk training was permanently migrated to Google Colab in `v0.1.0`.
