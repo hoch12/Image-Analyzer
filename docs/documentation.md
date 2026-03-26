@@ -37,4 +37,9 @@ Based on the latest training session, the model achieves the following metrics o
 
 Tato přesnost je pro demonstraci v rámci školního projektu plně dostačující. Vyšší přesnosti by bylo možné dosáhnout zvětšením datasetu o fotografie rukou z různých úhlů.
 
-*(This document will be continuously updated as the project progresses through UI Development.)*
+## Step 4: GUI Application & User Experience
+The final delivery is a desktop application built with `CustomTkinter`. 
+- **Simplicity**: Users can analyze images via a standard file dialog.
+- **Visual Feedback**: Real-time status update (Safe vs Vulgar) with a color-coded confidence bar.
+- **Transparency**: A sidebar provides technical details (model type, accuracy, recall) and links to the source code.
+- **Customization**: Support for Light, Dark, and System appearance modes.

@@ -1,6 +1,56 @@
-# Changelog
-
 All notable changes to the "Image Analyzer" project will be documented in this file.
+
+## [1.0.0] - 2026-03-26
+### Added
+- **Finalized Technical Metrics**: Updated the GUI and documentation to reflect real-world model performance (81% Accuracy, 69% Recall).
+- **Comprehensive Documentation**: Complete `README.md` revamp and detailed lifecycle docs in `docs/`.
+- **Polish & Cleanup**: Removed all temporary binary artifacts and unused Docker/Data scripts.
+- **Interactive Sidebar**: Clickable GitHub repository links and modernized glassmorphism logo.
+- **Code Refactor**: Full codebase refactor with professional docstrings and centralized `config.py`.
+
+### Fixed
+- **'No Hands Detected' UI**: Changed confidence display to "N/A" for non-hand images to prevent user confusion.
+- **Logo Transparency**: Fixed artifacts in the logo to ensure perfect display on dark backgrounds.
+
+## [0.2.1] - 2026-03-26
+### Changed
+- **UI/UX Core Refinement**: Revamped the application title to "Vulgarism Image Analyzer 🔍" for better clarity.
+- **Glassmorphism Logo**: Replaced the previous logo with a minimalist, premium "Liquid Glass" style icon.
+- **Expanded Technical Info**: Added detailed model stats, tech stack info, and GitHub repository links to the sidebar.
+- **Sidebar Description**: Integrated a concise functional description of the AI tool.
+
+
+## [0.2.0] - 2026-03-26
+### Added
+- **Modern Desktop GUI**: Implemented a sleek dark-mode application using `CustomTkinter` for easy image analysis.
+- **Prediction Engine**: Created a dedicated module for fast inference using the pre-trained Random Forest model and MediaPipe.
+- **Confidence Meter**: Visual feedback showing how certain the AI is about its prediction.
+- **Project Logo**: Added a high-tech, AI-themed logo to the application sidebar.
+- **Unit Testing**: Added a test suite to ensure the reliability of the prediction logic.
+
+## 0.1.7
+- Successfully trained the "Golden Model" using Google Colab on the refined dataset.
+- Achieved **90.34% Test Accuracy** with a Random Forest classifier.
+- Precision for middle finger detection: 0.94.
+- Updated `models/middle_finger_model.pkl` with the new weights.
+- Verified dataset size: 1500+ images (175 middle_finger, 1360 other).
+
+## 0.1.6
+- Surgically purged `middle_finger` dataset of all unverified crawl noise (~350+ images).
+- Generated a "Golden Dataset" of 17 perfect, high-resolution AI-generated isolated samples.
+- Restored 9 curated high-quality images and 1 personally verified high-quality crawl result.
+- Moved all unverified data to a backup folder in `other` for further review.
+- Guaranteed 100% precision for the `middle_finger` class to resolve the accuracy issues.
+
+## [0.1.5] - 2026-03-23
+### Changed
+- **Zero-Tolerance Dataset Purity**: Based on user analysis of dataset contamination, executed a complete purge of all 250+ auto-crawled `middle_finger` images. 
+- **Strict Isolated Procurement**: Wrote custom Python scrapers to bypass generic Bing algorithms and fetch 200 explicitly isolated, perfect "middle finger" ground-truth images (white/transparent backgrounds only) to guarantee structural MediaPipe learning without noise.
+
+## [0.1.4] - 2026-03-23
+### Changed
+- **Dataset Optimization & Cleaning**: Manually audited and quarantined noisy images from the initial dataset into the `other` folder to preserve data without diluting the model.
+- **Smart Crawler Expansion**: Enhanced the data collection queries in `config.py` with highly strict, isolated "middle finger" terminology. Downloaded a fresh batch of 200+ extremely clear and optimal images, directly improving model precision.
 
 ## [0.1.3] - 2026-03-16
 ### Added

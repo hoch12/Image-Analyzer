@@ -1,48 +1,53 @@
 import os
 
-# ------------------------------------------------------------------------------
-# Image Analyzer - Centralized Configuration
-# ------------------------------------------------------------------------------
+"""
+Central configuration for the Image Analyzer project.
+Contains data paths, model parameters, and search queries for the crawler.
+"""
 
-# --- 1. Data Collection & Preprocessing Paths ---
-DATA_DIR_RAW = "data/raw"
+# --- Project Root & Paths ---
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Data directories
+DATA_DIR = os.path.join(BASE_DIR, "data")
+DATA_DIR_RAW = os.path.join(DATA_DIR, "raw")
+DATA_DIR_PROCESSED = os.path.join(DATA_DIR, "processed")
+
+# Specific data subdirectories
 SAVE_DIR_MIDDLE = os.path.join(DATA_DIR_RAW, "middle_finger")
 SAVE_DIR_OTHER = os.path.join(DATA_DIR_RAW, "other")
-
-DATA_DIR_PROCESSED = "data/processed"
 OUTPUT_CSV_PATH = os.path.join(DATA_DIR_PROCESSED, "hand_landmarks.csv")
 
-MODEL_DIR = "models"
+# Model storage
+MODEL_DIR = os.path.join(BASE_DIR, "models")
 MODEL_PATH = os.path.join(MODEL_DIR, "middle_finger_model.pkl")
 
-# --- 2. Class Labels & Machine Learning ---
+# --- Model & ML Configuration ---
 # 0 = other, 1 = middle_finger
 CLASSES = {
     "other": 0,
     "middle_finger": 1
 }
 
-# --- 3. Web Crawler Configuration ---
-# Maximum images to theoretical download per query
-CRAWLER_IMGS_PER_MF_QUERY = 150
+# --- MediaPipe Configuration ---
+# Thresholds for hand detection and tracking in individual images
+DETECTION_CONFIDENCE = 0.3
+TRACKING_CONFIDENCE = 0.3
+MAX_NUM_HANDS = 1
+
+# --- Web Crawler Configuration ---
+# Maximum images to attempt downloading per individual query
+CRAWLER_IMGS_PER_MF_QUERY = 80
 CRAWLER_IMGS_PER_OTHER_QUERY = 100
 
+# Search terms used by icrawler to build the training dataset
 CRAWLER_MIDDLE_FINGER_QUERIES = [
-    "person showing middle finger",
-    "middle finger gesture",
-    "flipping the bird gesture",
-    "hand pointing middle finger",
-    "middle finger sign",
-    "angry person middle finger",
-    "showing the finger gesture",
-    "middle finger isolated clear",
-    "person face with middle finger gesture",
-    "celebrity showing middle finger",
-    "selfie showing middle finger",
-    "crowd person pointing middle finger",
-    "woman showing middle finger to camera",
-    "man flipping bird portrait",
-    "kid showing middle finger"
+    "middle finger extended hand sign illustration",
+    "offensive middle finger hand gesture stock photo",
+    "middle finger hand gesture sign isolated on white",
+    "giving the middle finger clear close up",
+    "middle finger gesture hand drawing vector",
+    "hand showing middle finger graphic symbol"
 ]
 
 CRAWLER_OTHER_QUERIES = [
@@ -58,18 +63,13 @@ CRAWLER_OTHER_QUERIES = [
     "crossed fingers luck",
     "shaking hands gesture",
     "thumbs down gesture",
-    "empty room interior",
     "nature landscape background",
     "person walking away",
     "person smiling face portrait",
     "group of people taking selfie",
     "man hands in pockets",
-    "woman holding smartphone",
-    "crowd of people cheering",
-    "person eating food close up",
-    "dog playing in park",
-    "car driving on street"
+    "woman holding smartphone"
 ]
 
-# --- 4. Validation Rules ---
+# --- Validation Rules ---
 ALLOWED_IMAGE_EXTENSIONS = ('.png', '.jpg', '.jpeg')

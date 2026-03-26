@@ -1,5 +1,9 @@
-six
 icrawler==0.6.10
-mediapipe==0.10.11
+mediapipe==0.10.14
 pandas
-numpy
+numpy<2
+customtkinter
+Pillow
+scikit-learn
+joblib
+opencv-contrib-python<4.9

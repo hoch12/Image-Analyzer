@@ -1,12 +1,19 @@
 import cv2
 import mediapipe as mp
 
+from src.config import DETECTION_CONFIDENCE, TRACKING_CONFIDENCE, MAX_NUM_HANDS
+
+"""
+Module for extracting hand landmarks using MediaPipe.
+"""
+
 # Initialize MediaPipe Hands once globally to save initialization time during inference
 _mp_hands = mp.solutions.hands
 _hands_detector = _mp_hands.Hands(
     static_image_mode=True,        # Set to True for processing individual images in GUI
-    max_num_hands=1,               # We only care about the primary hand doing the gesture
-    min_detection_confidence=0.5
+    max_num_hands=MAX_NUM_HANDS,   # Configurable via src/config.py
+    min_tracking_confidence=TRACKING_CONFIDENCE,
+    min_detection_confidence=DETECTION_CONFIDENCE
 )
 
 def extract_landmarks(image_rgb) -> list[float] | None:

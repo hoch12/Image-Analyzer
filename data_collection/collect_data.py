@@ -3,11 +3,25 @@ import sys
 import time
 from icrawler.builtin import BingImageCrawler
 
+"""
+Data collection utility for the Image Analyzer project.
+Uses icrawler (Bing) to automate image harvesting for model training.
+"""
+
 # Add the project root to the path so we can import from `src`
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src import config
 
 def crawl_images(keyword, save_dir, max_num):
+    """
+    Downloads images for a specific keyword into the target directory.
+    Uses an offset to prevent overwriting existing data.
+
+    Args:
+        keyword (str): The search term for Bing.
+        save_dir (str): Directory where images will be stored.
+        max_num (int): Maximum number of images to attempt to download.
+    """
     print(f"[*] Starting crawl for: '{keyword}' into {save_dir}")
     os.makedirs(save_dir, exist_ok=True)
     
@@ -17,13 +31,14 @@ def crawl_images(keyword, save_dir, max_num):
     
     crawler = BingImageCrawler(storage={'root_dir': save_dir})
     
-    # Optional filters to get better data
+    # Filters to ensure we get photographic color data
     filters = dict(type='photo', color='color')
     
     crawler.crawl(keyword=keyword, filters=filters, max_num=max_num, file_idx_offset=existing_files)
     print(f"[+] Finished crawling for: '{keyword}'. Total requested: {max_num}\n")
 
 def main():
+    """Main execution loop for full dataset harvesting."""
     print("===============================================")
     print(" Image Analyzer - Web Crawling Data Collection ")
     print("===============================================")
@@ -35,19 +50,18 @@ def main():
     imgs_per_mf_query = config.CRAWLER_IMGS_PER_MF_QUERY
     imgs_per_other_query = config.CRAWLER_IMGS_PER_OTHER_QUERY
 
-    print("\n--- Crawling 'Middle Finger' Class ---")
+    print("\n--- Harvesting 'Middle Finger' Class ---")
     for q in middle_finger_queries:
         crawl_images(q, config.SAVE_DIR_MIDDLE, imgs_per_mf_query)
-        time.sleep(2) # Be polite to the server
+        time.sleep(2) # Prevent rate-limiting
 
-    print("\n--- Crawling 'Other' Class ---")
+    print("\n--- Harvesting 'Other' Class ---")
     for q in other_queries:
         crawl_images(q, config.SAVE_DIR_OTHER, imgs_per_other_query)
         time.sleep(2)
 
     print("===============================================")
     print(" Data collection finished. Please verify the `data/raw` contents.")
-    print(" Note: Bing may not find the exact max_num, so check the final count.")
 
 if __name__ == "__main__":
     main()
