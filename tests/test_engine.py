@@ -16,7 +16,7 @@ class TestPredictionEngine(unittest.TestCase):
     def test_predict_no_image(self):
         result = self.engine.predict(image_path=None, pil_image=None)
         self.assertFalse(result["success"])
-        self.assertIn("No image provided", result["message"])
+        self.assertIn("No image input provided.", result["message"])
 
     def test_predict_invalid_path(self):
         result = self.engine.predict(image_path="non_existent.jpg")

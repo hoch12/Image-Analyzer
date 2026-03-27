@@ -1,5 +1,11 @@
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [1.0.1] - 2026-03-27
+### Fixed
+- **Environment Recovery**: Replaced broken virtual environment with a verified one (`.venv_new` -> `.venv`) as per user request.
+- **Dependency Setup**: Verified all core dependencies (`customtkinter`, `mediapipe`, `scikit-learn`) are correctly installed and aligned with `requirements.txt`.
+- **Unit Test Alignment**: Fixed `tests/test_engine.py` to match the latest engine error messages, achieving 100% test pass rate.
+
 ## [1.0.0] - 2026-03-26
 ### Added
 - **Finalized Technical Metrics**: Updated the GUI and documentation to reflect real-world model performance (81% Accuracy, 69% Recall).

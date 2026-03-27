@@ -37,10 +37,23 @@ Follow these steps to set up and run the application on your local machine.
 
 ### 3. Usage
 
-Run the GUI application directly from the root directory:
-```bash
-python3 -m src.gui
-```
+1.  **Aktivace virtuálního prostředí:**
+    ```bash
+    source .venv/bin/activate
+    ```
+2.  **Spuštění GUI:**
+    ```bash
+    python3 -m src.gui
+    ```
+    *Nebo přímo bez aktivace:*
+    ```bash
+    ./.venv/bin/python3 -m src.gui
+    ```
+
+3.  **Spuštění testů:**
+    ```bash
+    ./.venv/bin/python3 -m unittest discover tests
+    ```
 
 ---
 
