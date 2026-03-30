@@ -72,7 +72,8 @@ Follow these steps to set up and run the application on your local machine.
 ---
 
 ## 🧪 Documentation
-For deeper technical insights, please refer to the following:
+For deeper technical insights and customization, please refer to the following:
+- [Configuration Guide](docs/configuration.md) — How to customize AI sensitivity and UI.
 - [Development Lifecycle](docs/development.md)
 - [Testing Methodology](docs/testing.md)
 - [Changelog](changelog.md)

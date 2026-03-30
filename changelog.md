@@ -1,5 +1,10 @@
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [1.0.4] - 2026-03-30
+### Added
+- **Configuration Documentation**: Created `docs/configuration.md`, a comprehensive English guide for users to customize AI sensitivity and UI options via `src/config.py`.
+- **README Update**: Added links to the new configuration guide for better project discoverability.
+
 ## [1.0.3] - 2026-03-30
 ### Changed
 - **Config Centralization**: Extracted hardcoded GUI elements (titles, layout colors, and model statistics) from `src/gui.py` into a unified `src/config.py` structure.
