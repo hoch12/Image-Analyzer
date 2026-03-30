@@ -22,8 +22,8 @@ class ImageAnalyzerGUI(ctk.CTk):
         super().__init__()
 
         self.title(config.GUI_TITLE)
-        self.geometry("950x750")
-        self.minsize(850, 650)
+        self.geometry(f"{config.GUI_WIDTH}x{config.GUI_HEIGHT}")
+        self.minsize(config.GUI_MIN_WIDTH, config.GUI_MIN_HEIGHT)
 
         # Initialize engine
         self.engine = PredictionEngine()
@@ -50,7 +50,7 @@ class ImageAnalyzerGUI(ctk.CTk):
             self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
 
         # Description
-        self.desc_label = ctk.CTkLabel(self.sidebar_frame, text="AI tool for automatic\nmoderation of vulgar\nhand gestures in images.",
+        self.desc_label = ctk.CTkLabel(self.sidebar_frame, text=config.GUI_SIDEBAR_DESC,
                                         font=ctk.CTkFont(size=12, slant="italic"), justify="center")
         self.desc_label.grid(row=1, column=0, padx=20, pady=(0, 10))
 
@@ -140,12 +140,12 @@ class ImageAnalyzerGUI(ctk.CTk):
         img = Image.open(file_path)
         
         # Calculate aspect ratio
-        display_width = 500
+        display_width = config.GUI_PREVIEW_MAX_WIDTH
         w, h = img.size
         display_height = int(h * (display_width / w))
         
-        if display_height > 400:
-            display_height = 400
+        if display_height > config.GUI_PREVIEW_MAX_HEIGHT:
+            display_height = config.GUI_PREVIEW_MAX_HEIGHT
             display_width = int(w * (display_height / h))
 
         ctk_image = ctk.CTkImage(light_image=img, dark_image=img, size=(display_width, display_height))

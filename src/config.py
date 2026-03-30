@@ -80,3 +80,12 @@ GUI_MODEL_STATS_TEXT = "Accuracy: 90.34%\nRecall: 69%\nDataset: 2500+ samples\nM
 GUI_GITHUB_URL = "https://github.com/hoch12/Image-Analyzer"
 COLOR_VULGAR = "#E74C3C"
 COLOR_SAFE = "#2ECC71"
+
+# --- UI Layout & Sizes ---
+GUI_WIDTH = 950
+GUI_HEIGHT = 750
+GUI_MIN_WIDTH = 850
+GUI_MIN_HEIGHT = 650
+GUI_SIDEBAR_DESC = "AI tool for automatic\nmoderation of vulgar\nhand gestures in images."
+GUI_PREVIEW_MAX_WIDTH = 500
+GUI_PREVIEW_MAX_HEIGHT = 400
