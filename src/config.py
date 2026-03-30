@@ -73,3 +73,10 @@ CRAWLER_OTHER_QUERIES = [
 
 # --- Validation Rules ---
 ALLOWED_IMAGE_EXTENSIONS = ('.png', '.jpg', '.jpeg')
+
+# --- GUI Configuration ---
+GUI_TITLE = "Vulgarism Image Analyzer 🔍"
+GUI_MODEL_STATS_TEXT = "Accuracy: 90.34%\nRecall: 69%\nDataset: 2500+ samples\nModel: Random Forest\nLanguage: Python\n\nGitHub: hoch12/Image-Analyzer"
+GUI_GITHUB_URL = "https://github.com/hoch12/Image-Analyzer"
+COLOR_VULGAR = "#E74C3C"
+COLOR_SAFE = "#2ECC71"

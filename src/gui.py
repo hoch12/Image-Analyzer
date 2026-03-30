@@ -5,6 +5,7 @@ import customtkinter as ctk
 import webbrowser
 from PIL import Image, ImageTk
 from src.engine import PredictionEngine
+from src import config
 import cv2
 
 # Set theme and color palette
@@ -20,7 +21,7 @@ class ImageAnalyzerGUI(ctk.CTk):
         """Initializes the GUI, prediction engine, and sets up the layout."""
         super().__init__()
 
-        self.title("Vulgarism Image Analyzer 🔍")
+        self.title(config.GUI_TITLE)
         self.geometry("950x750")
         self.minsize(850, 650)
 
@@ -65,10 +66,10 @@ class ImageAnalyzerGUI(ctk.CTk):
                                        font=ctk.CTkFont(size=14, weight="bold"))
         self.info_title.pack(pady=(0, 5))
         
-        self.info_stats = ctk.CTkLabel(self.info_frame, text="Accuracy: 81%\nRecall: 69%\nDataset: 2500+ samples\nModel: Random Forest\nLanguage: Python\n\nGitHub: hoch12/Image-Analyzer",
+        self.info_stats = ctk.CTkLabel(self.info_frame, text=config.GUI_MODEL_STATS_TEXT,
                                        justify="left", font=ctk.CTkFont(size=11), cursor="hand2")
         self.info_stats.pack()
-        self.info_stats.bind("<Button-1>", lambda e: webbrowser.open("https://github.com/hoch12/Image-Analyzer"))
+        self.info_stats.bind("<Button-1>", lambda e: webbrowser.open(config.GUI_GITHUB_URL))
 
         # Appearance Mode
         self.appearance_mode_label = ctk.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
@@ -85,7 +86,7 @@ class ImageAnalyzerGUI(ctk.CTk):
         self.main_frame.grid_rowconfigure(1, weight=1)
 
         # Header
-        self.header_label = ctk.CTkLabel(self.main_frame, text="Vulgarism Image Analyzer 🔍", 
+        self.header_label = ctk.CTkLabel(self.main_frame, text=config.GUI_TITLE, 
                                          font=ctk.CTkFont(size=28, weight="bold"))
         self.header_label.grid(row=0, column=0, pady=(0, 20))
 
@@ -173,13 +174,13 @@ class ImageAnalyzerGUI(ctk.CTk):
         
         if label == "middle_finger":
             status_text = "⚠️ VULGARISM DETECTED!"
-            status_color = "#E74C3C"  # Nice red
+            status_color = config.COLOR_VULGAR
         elif label == "no_hand":
             status_text = "✅ No Hands Detected (Safe)"
-            status_color = "#2ECC71"  # Nice green
+            status_color = config.COLOR_SAFE
         else:
             status_text = "✅ SAFE TO UPLOAD"
-            status_color = "#2ECC71"  # Nice green
+            status_color = config.COLOR_SAFE
 
         self.status_label.configure(text=status_text, text_color=status_color)
         
@@ -192,9 +193,9 @@ class ImageAnalyzerGUI(ctk.CTk):
         
         # Change bar color based on result
         if label == "middle_finger":
-            self.confidence_bar.configure(progress_color="#E74C3C")
+            self.confidence_bar.configure(progress_color=config.COLOR_VULGAR)
         else:
-            self.confidence_bar.configure(progress_color="#2ECC71")
+            self.confidence_bar.configure(progress_color=config.COLOR_SAFE)
 
     def _change_appearance_mode_event(self, new_appearance_mode: str):
         ctk.set_appearance_mode(new_appearance_mode)
