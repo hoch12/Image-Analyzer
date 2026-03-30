@@ -1,5 +1,9 @@
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [1.0.2] - 2026-03-30
+### Fixed
+- **Documentation**: Updated `README.md` to explicitly specify `python3.12` for environment creation and script execution, fixing an issue where default `python3` pointing to 3.13 bypassed MediaPipe compatibility.
+
 ## [1.0.1] - 2026-03-27
 ### Fixed
 - **Environment Recovery**: Replaced broken virtual environment with a verified one (`.venv_new` -> `.venv`) as per user request.

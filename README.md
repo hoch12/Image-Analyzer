@@ -25,7 +25,7 @@ Follow these steps to set up and run the application on your local machine.
 
 2. **Create a virtual environment:**
    ```bash
-   python3 -m venv .venv
+   python3.12 -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
@@ -43,16 +43,16 @@ Follow these steps to set up and run the application on your local machine.
     ```
 2.  **Spuštění GUI:**
     ```bash
-    python3 -m src.gui
+    python3.12 -m src.gui
     ```
     *Nebo přímo bez aktivace:*
     ```bash
-    ./.venv/bin/python3 -m src.gui
+    ./.venv/bin/python3.12 -m src.gui
     ```
 
 3.  **Spuštění testů:**
     ```bash
-    ./.venv/bin/python3 -m unittest discover tests
+    ./.venv/bin/python3.12 -m unittest discover tests
     ```
 
 ---
