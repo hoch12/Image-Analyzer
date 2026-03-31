@@ -33,6 +33,12 @@ Customize the look and feel of the desktop application:
 *   `GUI_MIN_WIDTH` / `GUI_MIN_HEIGHT`: Minimum size the user can resize the window to.
 *   `GUI_PREVIEW_MAX_WIDTH` / `GUI_PREVIEW_MAX_HEIGHT`: Limits the size of the uploaded image preview to prevent layout breaking.
 
+## ✅ Verification with Test Data
+A `test_data/` directory is included in the project root. It contains specialized samples to verify that the configurations (like `DETECTION_CONFIDENCE` or `CLASSES`) are working as expected:
+- `mf1.JPG`: Should trigger a **VULGARISM DETECTED** alert.
+- `safe1.jpg`, `safe2.jpeg`, `safe3.jpg`: Should result in a **SAFE TO UPLOAD** status.
+- `person1f.png`, `person2f.png`: Used to test hand detection on crowded or complex portraits.
+
 ---
 
 > [!TIP]

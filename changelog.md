@@ -1,5 +1,10 @@
 All notable changes to the "Image Analyzer" project will be documented in this file.
 
+## [1.0.5] - 2026-03-31
+### Added
+- **Test Samples**: Included a new `test_data/` directory with real-world image samples (vulgar and safe) for quick application verification.
+- **Documentation Update**: Added "📸 Test Samples" section to `README.md` and a verification guide to `docs/configuration.md` explaining how to use the provided samples.
+
 ## [1.0.4] - 2026-03-30
 ### Added
 - **Configuration Documentation**: Created `docs/configuration.md`, a comprehensive English guide for users to customize AI sensitivity and UI options via `src/config.py`.

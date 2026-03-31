@@ -95,6 +95,16 @@ Follow these steps to set up and run the application on your local machine.
 
 ---
 
+## 📸 Test Samples
+
+A set of test images is provided in the `test_data/` folder to quickly verify the application's functionality. It includes both "vandalism" (middle finger) and "safe" samples.
+
+1.  Launch the application.
+2.  Click **"Upload Image"**.
+3.  Navigate to the `test_data/` directory and select a sample (e.g., `mf1.JPG` for a vulgarity alert or `safe1.jpg` for a safe result).
+
+---
+
 ## 🏗️ Project Architecture
 
 - `src/`: Core source code.
