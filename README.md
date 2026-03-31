@@ -10,6 +10,11 @@ Follow these steps to set up and run the application on your local machine.
 
 ### 1. Prerequisites
 - **Python 3.12** (Mandatory for MediaPipe compatibility)
+  - **Windows Note:** If you don't have Python 3.12 installed and the commands below fail, you can quickly install it via terminal using `winget`:
+    ```bash
+    winget install -e --id Python.Python.3.12
+    ```
+    *(Important: Restart your terminal after installation! Alternatively, download the installer from [python.org](https://www.python.org/downloads/windows/) and ensure "Add python.exe to PATH" is checked).*
 - **Git**
 - **Tkinter Support**:
   - macOS: `brew install python-tk@3.12`
@@ -19,40 +24,73 @@ Follow these steps to set up and run the application on your local machine.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/hoch12/Image-Analyzer.git
+   git clone [https://github.com/hoch12/Image-Analyzer.git](https://github.com/hoch12/Image-Analyzer.git)
    cd Image-Analyzer
    ```
 
 2. **Create a virtual environment:**
    ```bash
+   # macOS / Linux:
    python3.12 -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+   # Windows (via Python Launcher):
+   py -3.12 -m venv .venv
    ```
 
-3. **Install dependencies:**
+3. **Activate the virtual environment:**
+   ```bash
+   # macOS / Linux:
+   source .venv/bin/activate
+
+   # Windows (Git Bash):
+   source .venv/Scripts/activate
+
+   # Windows (Command Prompt / CMD):
+   .venv\Scripts\activate
+   ```
+
+4. **Install dependencies:**
+   *(Make sure your environment is activated from the previous step)*
    ```bash
    pip install --upgrade pip
    pip install -r requirements.txt
    ```
 
-### 3. Usage
+---
 
-1.  **Aktivace virtuálního prostředí:**
+## 💻 Usage
+
+1.  **Activating the virtual environment:**
+    Always activate the environment before running the project (see step 2.3). You will know it's activated when you see the `(.venv)` prefix in your terminal.
+
+2.  **Running the GUI:**
+    If your virtual environment is activated, the command is the same for all systems:
     ```bash
-    source .venv/bin/activate
-    ```
-2.  **Spuštění GUI:**
-    ```bash
-    python3.12 -m src.gui
-    ```
-    *Nebo přímo bez aktivace:*
-    ```bash
-    ./.venv/bin/python3.12 -m src.gui
+    python -m src.gui
     ```
 
-3.  **Spuštění testů:**
+    *Or run directly without activation (using absolute paths):*
     ```bash
-    ./.venv/bin/python3.12 -m unittest discover tests
+    # macOS / Linux:
+    ./.venv/bin/python -m src.gui
+
+    # Windows (Git Bash):
+    ./.venv/Scripts/python -m src.gui
+    ```
+
+3.  **Running tests:**
+    With activated virtual environment:
+    ```bash
+    python -m unittest discover tests
+    ```
+
+    *Without activating the environment:*
+    ```bash
+    # macOS / Linux:
+    ./.venv/bin/python -m unittest discover tests
+
+    # Windows (Git Bash):
+    ./.venv/Scripts/python -m unittest discover tests
     ```
 
 ---
